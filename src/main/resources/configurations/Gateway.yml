@@ -1,0 +1,115 @@
+server:
+  port: 8080
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    
+    
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: User
+        uri: http://localhost:8081
+        predicates:
+        - Path= /auth/**
+        
+      - id: User
+        uri: http://localhost:8081
+        predicates:
+        - Path= /admin/**
+        
+      - id: Product
+        uri: http://localhost:8082
+        predicates:
+        - Path= /products/**
+      
+      - id: Cart
+        uri: http://localhost:8083
+        predicates:
+        - Path= /cart/**
+        
+      - id: Wishlist
+        uri: http://localhost:8084
+        predicates:
+        - Path= /wishlist/**
+        
+      - id: Order
+        uri: http://localhost:8085
+        predicates:
+        - Path= /orders/**
+        
+      - id: Discount
+        uri: http://localhost:8086
+        predicates:
+        - Path= /discount/**
+      
+      
+      
+      
+      
+#      - id: student
+#        uri: http://localhost:8081
+#        predicates:
+#        - Path= /api/v1/students/**
+#        
+#      - id: school
+#        uri: http://localhost:8082
+#        predicates:
+#        - Path= /api/v1/school/**
+#        
+#      - id: book
+#        uri: http://localhost:8083
+#        predicates:
+#        - Path= /api/v1/book/**
+#        
+#      - id: jwtsecurity
+#        uri: http://localhost:8080
+#        predicates:
+#        - Path= /api/v1/auth/**
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
